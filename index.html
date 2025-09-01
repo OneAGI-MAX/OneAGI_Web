@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>One AGI — Toward One Intelligence</title>
+  <style>
+    :root{
+      --bg:#06070A; --text:#E9EEF6; --muted:#A5B0C1; --brand:#40BFFF; --accent:#FF7A00;
+      --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.08);
+      --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    /* ✅ 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body{margin:0; font-family:ui-sans-serif,system-ui; background:var(--bg); color:var(--text);}
+    .container{width:min(1120px,92vw); margin:0 auto}
+    header.hero{position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    #universe{position:absolute; inset:0; z-index:0; background:transparent;}
+    header.hero::before{content:""; position:absolute; inset:0; background:url('./Galaxy.png') center/cover no-repeat; opacity:1; z-index:-1;}
+    .hero-inner{position:relative; z-index:1; padding-top:10vh}
+    .logo-wrap{width:min(220px,40vw); margin:0 auto 20px; position:relative}
+    .logo{
+      width:100%; aspect-ratio:1/1; border-radius:50%;
+      background:url('./Logo.jpg') center/contain no-repeat;
+      box-shadow:0 0 0 1px var(--stroke), 0 0 60px rgba(64,191,255,.15) inset;
+      animation:breathe 5s ease-in-out infinite; position:relative;
+    }
+    @keyframes breathe{0%,100%{filter:drop-shadow(0 0 0 rgba(64,191,255,0))}50%{filter:drop-shadow(0 0 18px rgba(64,191,255,.45))}}
+    .logo::after{
+      content:""; position:absolute; left:50%; top:50%; width:62%; height:62%;
+      transform:translate(-50%,-50%) scale(0.78);
+      border-radius:50%; pointer-events:none;
+      background:radial-gradient(circle,
+        rgba(255,255,255,.55) 0%,
+        rgba(255,255,255,.28) 22%,
+        rgba(64,191,255,.14) 46%,
+        rgba(64,191,255,0) 64%);
+      mix-blend-mode:screen; filter:blur(1px);
+      animation:pulseGlow 2.8s ease-in-out infinite;
+    }
+    @keyframes pulseGlow{
+      0%   { transform:translate(-50%,-50%) scale(0.74); opacity:.65; }
+      50%  { transform:translate(-50%,-50%) scale(1.08); opacity:.30; }
+      100% { transform:translate(-50%,-50%) scale(0.74); opacity:.65; }
+    }
+    h1{font-size: clamp(30px, 6vw, 54px); margin:14px 0 8px;}
+    p.tagline{margin:0 0 24px; color:var(--muted); font-size: clamp(14px, 1.9vw, 18px)}
+    .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--brand),#7cd2ff); color:#061018; border:none; padding:14px 20px; border-radius:999px;
+      font-weight:700; cursor:pointer; box-shadow:var(--shadow); transition: transform .15s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary{background:transparent; color:var(--text); border:1px solid var(--stroke);}
+    section{padding:96px 0; position:relative} section .title{font-size:clamp(22px,4.6vw,34px); margin:0 0 16px}
+    section .lead{color:var(--muted); margin:0 0 32px; font-size:clamp(15px,2vw,18px)}
+    .about-box{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)}
+    .grid{display:grid; gap:18px} @media (min-width:900px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    .card{position: relative; background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);}
+    .badge{position:absolute; right:14px; top:14px; font-size:12px; color:#fff; background:linear-gradient(90deg,var(--brand),var(--accent));
+      padding:6px 10px; border-radius:999px; opacity:.9}
+    .pill{display:inline-flex; padding:6px 12px; border-radius:999px; border:1px solid var(--stroke); font-size:12px; color:var(--muted);}
+    .join{display:grid; gap:22px; grid-template-columns:1.2fr .8fr} @media(max-width:900px){.join{grid-template-columns:1fr}}
+    .panel{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+    footer{padding:40px 0 60px; color:var(--muted); text-align:center; border-top:1px solid var(--stroke)}
+    .links{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:10px 0 0} .links a{padding:6px 10px; border:1px solid var(--stroke); border-radius:10px}
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <canvas id="universe"></canvas>
+    <div class="hero-inner container">
+      <div class="logo-wrap"><div class="logo"></div></div>
+      <h1>One AGI</h1>
+      <p class="tagline">Unifying intelligence, transcending boundaries.</p>
+      <div class="cta">
+        <a class="btn" href="#join">Join Us</a>
+        <a class="btn secondary" href="#about">What is One AGI?</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="pill">About</div>
+      <h2 class="title">What is One AGI?</h2>
+      <p class="lead">Is it a company? A movement? An association? <strong>One AGI</strong> is the journey toward Artificial General Intelligence — open, collaborative, and beyond boundaries.</p>
+      <div class="about-box">
+        <div class="grid cols-3">
+          <div class="card"><h3>Open-ended</h3><p>Identity stays intentionally fuzzy so vision leads form.</p></div>
+          <div class="card"><h3>Visual-first</h3><p>We sell the vibe before the product. Energy, cosmos, future.</p></div>
+          <div class="card"><h3>Community</h3><p>Gather builders, researchers, and believers around a shared direction.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <div class="container">
+      <div class="pill">Vision</div>
+      <h2 class="title">One Intelligence for All</h2>
+      <p class="lead">AI that grow as a being. Many minds → One coordination. Breaking gates toward infinity.</p>
+      <div class="grid cols-3">
+        <div class="card"><span class="badge">Grow</span><h3>Grow as a being</h3><p>From perception to structure, learning by doing, not just imitating.</p></div>
+        <div class="card"><span class="badge">Unify</span><h3>Many → One</h3><p>Coordination over fragmentation. Aligning systems into a larger whole.</p></div>
+        <div class="card"><span class="badge">Beyond</span><h3>Breaking Gates</h3><p>Remove artificial walls. Push through to the next horizon.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="container join">
+      <div class="panel">
+        <div class="pill">Join</div>
+        <h2 class="title">Stay Updated</h2>
+        <p class="lead">Be the first to know when we launch initiatives, drops, and events.</p>
+        <form class="form" action="https://formspree.io/f/your-form-id" method="POST">
+          <input type="email" name="email" placeholder="you@example.com" required />
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h3>Links</h3>
+        <ul style="color:var(--muted)">
+          <li>LinkedIn — <a href="https://www.linkedin.com/company/one-agi/" target="_blank">One AGI LinkedIn</a></li>
+          <li>GitHub — <a href="https://github.com/MJXWANG/One_AGI" target="_blank">GitHub Repo</a></li>
+          <li>Notion — <a href="#">Roadmap</a></li>
+          <li>Substack — <a href="#">Dispatch</a></li>
+          <li>Email — <a href="mailto:hello@one-agi.org">hello@one-agi.org</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>&copy; <span id="y"></span> One AGI • Toward One Intelligence</div>
+      <div class="links">
+        <a href="#home">Top</a>
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#join">Join</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const canvas=document.getElementById('universe'); const ctx=canvas.getContext('2d');
+    const DPR=Math.min(2,window.devicePixelRatio||1); let stars=[],w,h,t=0;
+    function resize(){w=canvas.width=Math.floor(innerWidth*DPR); h=canvas.height=Math.floor(innerHeight*DPR);
+      canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px'; initStars();}
+    function initStars(){const count=Math.floor((w*h)/(26000*DPR));
+      stars=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.2,s:Math.random()*1.0+0.5}));}
+    function drawStars(){for(const s of stars){s.y+=s.s;if(s.y>h)s.y=0;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*3);g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(1,'rgba(64,191,255,0)');
+      ctx.fillStyle=g;ctx.fill();}}
+    function drawEnergyArc(){const cx=w*0.5,cy=h*0.42,R=Math.min(w,h)*0.48; const sweep=Math.PI*1.05;
+      const base=-Math.PI*0.1+Math.sin(t*0.0012)*0.15;
+      function arc(stroke,line,blur){ctx.save();ctx.shadowBlur=blur;ctx.shadowColor=stroke;ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.lineCap='round';
+        ctx.beginPath();ctx.arc(cx,cy,R,base,base+sweep,false);ctx.stroke();ctx.restore();}
+      arc('rgba(64,191,255,.65)',2.4*DPR,18*DPR); arc('rgba(255,122,0,.55)',1.6*DPR,10*DPR);
+      const p=(t*0.0008)%1; const ang=base+p*sweep; const x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang);
+      const g=ctx.createRadialGradient(x,y,0,x,y,22*DPR); g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(1,'rgba(64,191,255,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,18*DPR,0,Math.PI*2); ctx.fill();}
+    function frame(ts){t=ts; ctx.clearRect(0,0,w,h);
+      drawStars(); drawEnergyArc(); requestAnimationFrame(frame);}
+    addEventListener('resize',resize); resize(); requestAnimationFrame(frame);
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
+
