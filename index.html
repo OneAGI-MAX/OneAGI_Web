@@ -54,6 +54,7 @@
       font-weight:700; cursor:pointer; box-shadow:var(--shadow); transition: transform .15s ease}
     .btn:hover{transform:translateY(-2px)}
     .btn.secondary{background:transparent; color:var(--text); border:1px solid var(--stroke);}
+    .btn.whitepaper{background:linear-gradient(90deg,var(--accent),#ff9d40); color:#fff;}
     section{padding:96px 0; position:relative} section .title{font-size:clamp(22px,4.6vw,34px); margin:0 0 16px}
     section .lead{color:var(--muted); margin:0 0 32px; font-size:clamp(15px,2vw,18px)}
     .about-box{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)}
@@ -78,6 +79,7 @@
       <div class="cta">
         <a class="btn" href="#join">Join Us</a>
         <a class="btn secondary" href="#about">What is One AGI?</a>
+        <a class="btn whitepaper" href="https://arxiv.org/pdf/2509.02089" target="_blank" rel="noopener noreferrer">Whitepaper</a>
       </div>
     </div>
   </header>
@@ -110,6 +112,19 @@
     </div>
   </section>
 
+  <section id="whitepaper">
+    <div class="container">
+      <div class="pill">Whitepaper</div>
+      <h2 class="title">AGI as Second Being</h2>
+      <p class="lead">The Structural-Generative Ontology of Intelligence — exploring how true intelligence emerges from generativity, coordination, and sustaining, rather than mere functional breadth.</p>
+      <div class="about-box" style="text-align:center; padding:40px 28px;">
+        <a class="btn whitepaper" href="https://arxiv.org/pdf/2509.02089" target="_blank" rel="noopener noreferrer" style="font-size:18px; padding:18px 32px;">
+          Read Whitepaper
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="join">
     <div class="container join">
       <div class="panel">
@@ -136,6 +151,7 @@
         <a href="#home">Top</a>
         <a href="#about">About</a>
         <a href="#vision">Vision</a>
+        <a href="#whitepaper">Whitepaper</a>
         <a href="#join">Join</a>
       </div>
     </div>
