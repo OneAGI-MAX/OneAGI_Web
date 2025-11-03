@@ -169,14 +169,49 @@
     function drawStars(){for(const s of stars){s.y+=s.s;if(s.y>h)s.y=0;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
       const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*3);g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(1,'rgba(64,191,255,0)');
       ctx.fillStyle=g;ctx.fill();}}
-    function drawEnergyArc(){const cx=w*0.5,cy=h*0.42,R=Math.min(w,h)*0.48; const sweep=Math.PI*1.05;
-      const base=-Math.PI*0.1+Math.sin(t*0.0012)*0.15;
-      function arc(stroke,line,blur){ctx.save();ctx.shadowBlur=blur;ctx.shadowColor=stroke;ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.lineCap='round';
-        ctx.beginPath();ctx.arc(cx,cy,R,base,base+sweep,false);ctx.stroke();ctx.restore();}
-      arc('rgba(64,191,255,.65)',2.4*DPR,18*DPR); arc('rgba(255,122,0,.55)',1.6*DPR,10*DPR);
-      const p=(t*0.0008)%1; const ang=base+p*sweep; const x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang);
-      const g=ctx.createRadialGradient(x,y,0,x,y,22*DPR); g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(1,'rgba(64,191,255,0)');
-      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,18*DPR,0,Math.PI*2); ctx.fill();}
+    function drawEnergyArc(){
+      const logoWrap=document.querySelector('.logo-wrap');
+      if(!logoWrap)return;
+      const rect=logoWrap.getBoundingClientRect();
+      const cx=(rect.left+rect.width/2)*DPR;
+      const cy=(rect.top+rect.height/2)*DPR;
+      const logoRadius=(rect.width/2)*DPR;
+      const R=logoRadius*1.8;
+      const tilt=0.3;
+      const base=Math.sin(t*0.0012)*0.1;
+      function arc(stroke,line,blur){
+        ctx.save();
+        ctx.translate(cx,cy);
+        ctx.rotate(tilt);
+        ctx.shadowBlur=blur;ctx.shadowColor=stroke;ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.lineCap='round';
+        ctx.beginPath();
+        const ellipseX=0,ellipseY=0;
+        const rx=R,ry=R*0.25;
+        ctx.ellipse(ellipseX,ellipseY,rx,ry,0,0,Math.PI*2);
+        ctx.stroke();
+        ctx.restore();
+      }
+      arc('rgba(64,191,255,.65)',2.4*DPR,18*DPR);
+      arc('rgba(255,122,0,.55)',1.6*DPR,10*DPR);
+      const p=(t*0.0008)%1;
+      const ang=p*Math.PI*2;
+      ctx.save();
+      ctx.translate(cx,cy);
+      ctx.rotate(tilt);
+      const rx=R,ry=R*0.25;
+      const x=rx*Math.cos(ang);
+      const y=ry*Math.sin(ang);
+      ctx.restore();
+      const finalX=cx+Math.cos(tilt)*x-Math.sin(tilt)*y;
+      const finalY=cy+Math.sin(tilt)*x+Math.cos(tilt)*y;
+      const g=ctx.createRadialGradient(finalX,finalY,0,finalX,finalY,22*DPR);
+      g.addColorStop(0,'rgba(255,255,255,.9)');
+      g.addColorStop(1,'rgba(64,191,255,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();
+      ctx.arc(finalX,finalY,18*DPR,0,Math.PI*2);
+      ctx.fill();
+    }
     function frame(ts){t=ts; ctx.clearRect(0,0,w,h);
       drawStars(); drawEnergyArc(); requestAnimationFrame(frame);}
     addEventListener('resize',resize); resize(); requestAnimationFrame(frame);
