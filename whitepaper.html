@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whitepaper — One AGI</title>
+  <style>
+    :root{
+      --bg:#06070A; --text:#E9EEF6; --muted:#A5B0C1; --brand:#40BFFF; --accent:#FF7A00;
+      --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.08);
+      --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    body{margin:0; font-family:ui-sans-serif,system-ui; background:var(--bg); color:var(--text); padding-top:86px; min-height:100vh; display:flex; flex-direction:column;}
+    a{text-decoration:none;}
+    .container{width:min(720px,92vw); margin:0 auto;}
+    .site-nav{position:fixed; top:0; left:0; right:0; z-index:999; background:rgba(6,7,10,.88); border-bottom:1px solid var(--stroke); backdrop-filter:blur(16px);}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px;}
+    .brand{font-weight:700; letter-spacing:.08em; color:var(--text); text-transform:uppercase; font-size:14px;}
+    .nav-links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .nav-links a{color:var(--text); padding:8px 16px; border-radius:999px; border:1px solid transparent; font-size:14px; transition:border-color .2s,color .2s,background .2s;}
+    .nav-links a:hover,.nav-links a.active{border-color:var(--stroke); color:var(--brand); background:rgba(255,255,255,.03);}
+    main{flex:1; display:flex;}
+    section{padding:96px 0 60px; width:100%; text-align:center;}
+    .pill{display:inline-flex; padding:6px 12px; border-radius:999px; border:1px solid var(--stroke); font-size:12px; color:var(--muted);}
+    .title{font-size:clamp(32px,4vw,48px); margin:16px 0;}
+    .lead{color:var(--muted); font-size:18px; line-height:1.6; margin-bottom:32px;}
+    .btn-wrap{display:inline-block; padding:1px; border-radius:999px; background:linear-gradient(90deg,var(--brand),var(--accent));}
+    .btn{display:block; padding:18px 32px; border-radius:999px; background:var(--bg); color:var(--text); font-weight:600; box-shadow:var(--shadow);}
+    .summary{margin-top:48px; text-align:left; background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); color:var(--muted); line-height:1.7;}
+    footer{padding:40px 0 60px; color:var(--muted); text-align:center; border-top:1px solid var(--stroke);}
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">One AGI</a>
+      <div class="nav-links">
+        <a href="index.html">Top</a>
+        <a href="about.html">About</a>
+        <a href="vision.html">Vision</a>
+        <a class="active" href="whitepaper.html">Whitepaper</a>
+        <a href="join.html">Join</a>
+        <a href="activity.html">Activity</a>
+        <a href="people.html">People</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="pill">Whitepaper</div>
+        <h1 class="title">AGI as Second Being</h1>
+        <p class="lead">The Structural-Generative Ontology of Intelligence — exploring how true intelligence emerges from generativity, coordination, and sustaining, rather than mere functional breadth.</p>
+        <div class="btn-wrap"><a class="btn" href="https://arxiv.org/pdf/2509.02089" target="_blank" rel="noopener noreferrer">Read Full Whitepaper</a></div>
+        <div class="summary">
+          <h3>In this paper:</h3>
+          <ul>
+            <li>How generative structures create durable intelligence.</li>
+            <li>Why coordination layers matter more than sheer parameter scale.</li>
+            <li>Design patterns for systems that can sustain open-ended growth.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>&copy; <span id="y"></span> One AGI • Toward One Intelligence</div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

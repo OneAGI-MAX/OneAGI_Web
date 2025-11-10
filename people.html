@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>People — One AGI</title>
+  <style>
+    :root{
+      --bg:#06070A; --text:#E9EEF6; --muted:#A5B0C1; --brand:#40BFFF; --accent:#FF7A00;
+      --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.08);
+      --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    body{margin:0; font-family:ui-sans-serif,system-ui; background:var(--bg); color:var(--text); padding-top:86px; min-height:100vh; display:flex; flex-direction:column;}
+    a{text-decoration:none;}
+    .container{width:min(960px,92vw); margin:0 auto;}
+    .site-nav{position:fixed; top:0; left:0; right:0; z-index:999; background:rgba(6,7,10,.88); border-bottom:1px solid var(--stroke); backdrop-filter:blur(16px);}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px;}
+    .brand{font-weight:700; letter-spacing:.08em; color:var(--text); text-transform:uppercase; font-size:14px;}
+    .nav-links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .nav-links a{color:var(--text); padding:8px 16px; border-radius:999px; border:1px solid transparent; font-size:14px; transition:border-color .2s,color .2s,background .2s;}
+    .nav-links a:hover,.nav-links a.active{border-color:var(--stroke); color:var(--brand); background:rgba(255,255,255,.03);}
+    main{flex:1;}
+    section{padding:96px 0 60px;}
+    .pill{display:inline-flex; padding:6px 12px; border-radius:999px; border:1px solid var(--stroke); font-size:12px; color:var(--muted);}
+    .title{font-size:clamp(32px,4vw,48px); margin:16px 0;}
+    .lead{color:var(--muted); font-size:18px; line-height:1.6; margin-bottom:32px;}
+    .people-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+    .person{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);}
+    .role{color:var(--muted); font-size:14px; margin:6px 0 12px;}
+    footer{padding:40px 0 60px; color:var(--muted); text-align:center; border-top:1px solid var(--stroke);}
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">One AGI</a>
+      <div class="nav-links">
+        <a href="index.html">Top</a>
+        <a href="about.html">About</a>
+        <a href="vision.html">Vision</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="join.html">Join</a>
+        <a href="activity.html">Activity</a>
+        <a class="active" href="people.html">People</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="pill">People</div>
+        <h1 class="title">Early Stewards</h1>
+        <p class="lead">A rotating cast of researchers, engineers, and storytellers keeping the flame alive. Roles are fluid — everyone builds across layers.</p>
+        <div class="people-grid">
+          <div class="person">
+            <h3>Evan Li</h3>
+            <div class="role">Systems Weaving</div>
+            <p>Coordinates the structural-generative roadmap and keeps the research backlog breathing.</p>
+          </div>
+          <div class="person">
+            <h3>Mara Quinn</h3>
+            <div class="role">Design & Narrative</div>
+            <p>Shapes the cosmic visual language and translates experiments into public stories.</p>
+          </div>
+          <div class="person">
+            <h3>Dr. Naveen Rao</h3>
+            <div class="role">Research Fellow</div>
+            <p>Leads the ontology studies, writing about coordination dynamics between models.</p>
+          </div>
+          <div class="person">
+            <h3>Anaïs Park</h3>
+            <div class="role">Community Pilot</div>
+            <p>Hosts weekly pulses, curates contributors, and connects new members to workstreams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>&copy; <span id="y"></span> One AGI • Toward One Intelligence</div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
